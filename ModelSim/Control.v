@@ -35,9 +35,7 @@ reg [10:0] ControlValues;
 always@(OP) begin
 	casex(OP)
 		R_Type:       ControlValues= 11'b1_001_00_00_111;
-		
-		I_Type_ADDI:  ControlValues= 11'b0_101_00_00_100;
-
+		I_Type_ADDI:  ControlValues = 11'b0_101_00_00_110; 	
 		
 		
 		default:
@@ -56,5 +54,4 @@ assign BranchEQ = ControlValues[3];
 assign ALUOp = ControlValues[2:0];	
 
 endmodule
-
 
