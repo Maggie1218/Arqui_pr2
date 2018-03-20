@@ -1,0 +1,384 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/17.1
+vAdder32bits
+Z0 !s110 1521555354
+!i10b 1
+!s100 ]H0^NRAm[`J07LMS2@]Pb2
+I?a?XLB2G5V06@HajE^DN32
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim
+w1419780579
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Adder32bits.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Adder32bits.v
+Z3 L0 13
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1521555354.000000
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Adder32bits.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Adder32bits.v|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+n@adder32bits
+vALU
+R0
+!i10b 1
+!s100 1TcBJBf@zToez;C:ST=6c2
+I5WHO8X@Z[bmUZdajem5h90
+R1
+R2
+w1497070358
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ALU.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ALU.v
+L0 20
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ALU.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ALU.v|
+!i113 1
+R6
+R7
+n@a@l@u
+vALUControl
+R0
+!i10b 1
+!s100 ^GzUEmK=>`:c[`go4cSS83
+IG141^3f9W`fcRLoR4>Q;W3
+R1
+R2
+w1497070345
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ALUControl.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ALUControl.v
+Z8 L0 15
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ALUControl.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ALUControl.v|
+!i113 1
+R6
+R7
+n@a@l@u@control
+vANDGate
+Z9 !s110 1521555355
+!i10b 1
+!s100 =@O=aQRi;bazk13J6U>4m3
+IKRUIOEk]ANG<TOjP5^YQl2
+R1
+R2
+w1419780594
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ANDGate.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ANDGate.v
+R3
+R4
+r1
+!s85 0
+31
+Z10 !s108 1521555355.000000
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ANDGate.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ANDGate.v|
+!i113 1
+R6
+R7
+n@a@n@d@gate
+vControl
+R9
+!i10b 1
+!s100 SSe8S;NKPZ2MKbd1AS;VW1
+If[Xg1m]FMCb9dzYgO?dj^0
+R1
+R2
+w1521555325
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Control.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Control.v
+Z11 L0 14
+R4
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Control.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Control.v|
+!i113 1
+R6
+R7
+n@control
+vDataMemory
+R9
+!i10b 1
+!s100 @OPaVYHbgG?72[TazmZN01
+IY9EOiU_^iITCh@zOBMQYd2
+R1
+R2
+w1419780722
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/DataMemory.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/DataMemory.v
+R3
+R4
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/DataMemory.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/DataMemory.v|
+!i113 1
+R6
+R7
+n@data@memory
+vDecoderRegisterFile
+R9
+!i10b 1
+!s100 WiBBY1;C0OC:8`V5m[Rn51
+IZ:JcaJd>^C55h9n=?_AOZ3
+R1
+R2
+w1419780743
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/DecoderRegisterFile.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/DecoderRegisterFile.v
+Z12 L0 12
+R4
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/DecoderRegisterFile.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/DecoderRegisterFile.v|
+!i113 1
+R6
+R7
+n@decoder@register@file
+vMIPS_Processor
+R9
+!i10b 1
+!s100 QVci2_n[E0MBM`1]jKC_90
+IfKCMXQLfIc^NbN@D;1zW^3
+R1
+R2
+w1521554449
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MIPS_Processor.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MIPS_Processor.v
+L0 28
+R4
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MIPS_Processor.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MIPS_Processor.v|
+!i113 1
+R6
+R7
+n@m@i@p@s_@processor
+vMIPS_Processor_TB
+R9
+!i10b 1
+!s100 93:RClE5YGZRK?HHmQNoS0
+Ibdz:TLB8JCGBKMJfN8_7L2
+R1
+R2
+w1465771738
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MIPS_Processor_TB.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MIPS_Processor_TB.v
+R8
+R4
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MIPS_Processor_TB.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MIPS_Processor_TB.v|
+!i113 1
+R6
+R7
+n@m@i@p@s_@processor_@t@b
+vMultiplexer2to1
+R9
+!i10b 1
+!s100 F48Y>?kNP3VGSJ<6PZ3Z<0
+IOU^`n5_?Dh`2=^R;4<MZa2
+R1
+R2
+w1419780640
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Multiplexer2to1.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Multiplexer2to1.v
+R3
+R4
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Multiplexer2to1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Multiplexer2to1.v|
+!i113 1
+R6
+R7
+n@multiplexer2to1
+vMUXRegisterFile
+Z13 !s110 1521555356
+!i10b 1
+!s100 <^j`[[]Fjj[]CWW`3JSFT0
+IB<mW1>b6G8`Z_:2MUZQm_2
+R1
+R2
+w1392863324
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MUXRegisterFile.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MUXRegisterFile.v
+L0 2
+R4
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MUXRegisterFile.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/MUXRegisterFile.v|
+!i113 1
+R6
+R7
+n@m@u@x@register@file
+vPC_Register
+R13
+!i10b 1
+!s100 _;b?E28JEcZ?mB]466AVZ0
+Ig0f27;lVlg84C6WhP<`]X0
+R1
+R2
+w1419780658
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/PC_Register.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/PC_Register.v
+R8
+R4
+r1
+!s85 0
+31
+Z14 !s108 1521555356.000000
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/PC_Register.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/PC_Register.v|
+!i113 1
+R6
+R7
+n@p@c_@register
+vProgramMemory
+R13
+!i10b 1
+!s100 f`d4;DMKzM2IiDbNWlCc<3
+IMh9iJX?8RU34V8`@4=>RF0
+R1
+R2
+w1521552273
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ProgramMemory.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ProgramMemory.v
+R8
+R4
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ProgramMemory.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ProgramMemory.v|
+!i113 1
+R6
+R7
+n@program@memory
+vRegister
+R13
+!i10b 1
+!s100 egCIUc]UZ1M2z58M]>B@S3
+IYV?_h17oE1=5e5jO2cm>K3
+R1
+R2
+w1419780761
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Register.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Register.v
+R12
+R4
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Register.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/Register.v|
+!i113 1
+R6
+R7
+n@register
+vRegisterFile
+R13
+!i10b 1
+!s100 iRCaBoP=AVEo`Pldi`c<00
+IIG17Ck@4d[kLEIjRTOm8C2
+R1
+R2
+w1475516362
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/RegisterFile.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/RegisterFile.v
+R8
+R4
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/RegisterFile.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/RegisterFile.v|
+!i113 1
+R6
+R7
+n@register@file
+vShiftLeft2
+R13
+!i10b 1
+!s100 Hi:hlBR22G;<919E5iIcC3
+In9RSRjWOY<d5EU^P5eG[43
+R1
+R2
+w1419780687
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ShiftLeft2.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ShiftLeft2.v
+R12
+R4
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ShiftLeft2.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/ShiftLeft2.v|
+!i113 1
+R6
+R7
+n@shift@left2
+vSignExtend
+R13
+!i10b 1
+!s100 I1D7fe4B<UD12_E`@TC:T3
+IIfM[l3c`oGYG7^@MG_ien3
+R1
+R2
+w1419780694
+8C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/SignExtend.v
+FC:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/SignExtend.v
+R11
+R4
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/SignExtend.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/marga/Documents/ITESO/Primavera 2018/Arqui/ModelSim/SignExtend.v|
+!i113 1
+R6
+R7
+n@sign@extend
