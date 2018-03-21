@@ -28,8 +28,6 @@ module ALU
 
 localparam ADD = 4'b0011;
 localparam SUB = 4'b0100;
-localparam AND = 4'b0000;
-localparam OR =  4'b0001;
    
    always @ (A or B or ALUOperation)
      begin
@@ -38,11 +36,6 @@ localparam OR =  4'b0001;
 			ALUResult=A + B;
 		  SUB: // sub
 			ALUResult=A - B;
-		  AND: //and
-			ALUResult=A & B;
-		  OR: //or
-			ALUResult =A|B;
-			
 
 		default:
 			ALUResult= 0;

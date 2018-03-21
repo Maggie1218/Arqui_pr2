@@ -16,7 +16,7 @@ module Control
 	input [5:0]OP,
 	
 	output RegDst,
-	output BranchEQ,
+	output BranchEQ, 
 	output BranchNE,
 	output MemRead,
 	output MemtoReg,
