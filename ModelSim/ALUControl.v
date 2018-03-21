@@ -41,6 +41,7 @@ always@(Selector)begin
 		R_Type_OR: 		ALUControlValues = 4'b0001;
 		R_Type_ADD:		ALUControlValues = 4'b0011; 
 		R_Type_SUB:		ALUControlValues = 4'b0100;
+		R_Type_NOR: 	ALUControlValues = 4'b0010;
 		
 		I_Type_ANDI:	ALUControlValues = 4'b0000; 
 		I_Type_ORI:		ALUControlValues = 4'b0001; 	
