@@ -31,6 +31,7 @@ localparam SUB = 4'b0100;
 localparam AND = 4'b0000;
 localparam OR =  4'b0001;
 localparam NOR = 4'b0010;
+localparam LUI = 4'b0101;
    
    always @ (A or B or ALUOperation)
      begin
@@ -45,6 +46,8 @@ localparam NOR = 4'b0010;
 			ALUResult =A|B;
 		  NOR: //nor
 		   ALUResult = ~(A|B);
+		  LUI:
+		   ALUResult = {B, 16'b0};
 			
 
 		default:

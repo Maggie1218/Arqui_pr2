@@ -27,7 +27,8 @@
 
 module MIPS_Processor
 #(
-	parameter MEMORY_DEPTH = 32
+	parameter MEMORY_DEPTH = 32,
+	parameter DATA_WIDTH = 32
 )
 
 (
@@ -48,6 +49,9 @@ assign  PortOut = 0;
 // Data types to connect modules
 wire BranchNE_wire;
 wire BranchEQ_wire;
+wire MemRead_wire;
+wire MemtoReg_wire;
+wire MemWrite_wire;
 wire RegDst_wire;
 wire NotZeroANDBrachNE;
 wire ZeroANDBrachEQ;
@@ -59,7 +63,8 @@ wire [2:0] ALUOp_wire;
 wire [3:0] ALUOperation_wire;
 wire [4:0] WriteRegister_wire;
 wire [31:0] PC_wire;
-
+wire [31:0] MUX_RFWrite_wire;
+wire [31:0] RAMReadData_wire;
 wire [31:0] Instruction_wire;
 wire [31:0] ReadData1_wire;
 wire [31:0] ReadData2_wire;
@@ -84,6 +89,9 @@ ControlUnit
 	.RegDst(RegDst_wire),
 	.BranchNE(BranchNE_wire),
 	.BranchEQ(BranchEQ_wire),
+	.MemRead(MemRead_wire),
+	.MemtoReg(MemtoReg_wire),
+	.MemWrite(MemWrite_wire),
 	.ALUOp(ALUOp_wire),
 	.ALUSrc(ALUSrc_wire),
 	.RegWrite(RegWrite_wire)
@@ -101,9 +109,19 @@ program_counter
 	.PCValue(PC_wire)
 );
 
-
-
-
+DataMemory
+#(
+	.DATA_WIDTH(DATA_WIDTH)
+)
+RAMDataMemory
+(
+	.WriteData(ReadData2_wire),
+	.Address(ALUResult_wire),
+	.clk(clk),
+	.MemWrite(MemWrite_wire),
+	.MemRead(MemRead_wire),
+	.ReadData(RAMReadData_wire)
+);
 
 
 ProgramMemory
@@ -145,7 +163,19 @@ MUX_ForRTypeAndIType
 
 );
 
+Multiplexer2to1
+#(
+	.NBits(DATA_WIDTH)
+)
+MUX_ForWriteDataToFR
+(
+	.Selector(MemtoReg_wire),
+	.MUX_Data0(ALUResult_wire),
+	.MUX_Data1(RAMReadData_wire),
+	
+	.MUX_Output(MUX_RFWrite_wire)
 
+);
 
 RegisterFile
 Register_File
@@ -156,7 +186,7 @@ Register_File
 	.WriteRegister(WriteRegister_wire),
 	.ReadRegister1(Instruction_wire[25:21]),
 	.ReadRegister2(Instruction_wire[20:16]),
-	.WriteData(ALUResult_wire),
+	.WriteData(MUX_RFWrite_wire),
 	.ReadData1(ReadData1_wire),
 	.ReadData2(ReadData2_wire)
 
