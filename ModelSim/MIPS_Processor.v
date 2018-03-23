@@ -222,6 +222,7 @@ ArithmeticLogicUnitControl
 	.ALUOp(ALUOp_wire),
 	.ALUFunction(Instruction_wire[5:0]),
 	.ALUOperation(ALUOperation_wire)
+	
 
 );
 
@@ -234,7 +235,8 @@ ArithmeticLogicUnit
 	.A(ReadData1_wire),
 	.B(ReadData2OrInmmediate_wire),
 	.Zero(Zero_wire),
-	.ALUResult(ALUResult_wire)
+	.ALUResult(ALUResult_wire),
+	.shamt(Instruction_wire[10:6])
 );
 
 assign ALUResultOut = ALUResult_wire;
