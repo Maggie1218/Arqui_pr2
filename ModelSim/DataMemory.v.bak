@@ -21,10 +21,6 @@ module DataMemory
 	input MemWrite,MemRead, clk,
 	output  [DATA_WIDTH-1:0]  ReadData
 );
-
-	//Real Address variable
-	wire [9:0] realAddress;
-	assign realAddress = (Address - 268500992)/4;
 	
 	// Declare the RAM variable
 	reg [DATA_WIDTH-1:0] ram[MEMORY_DEPTH-1:0];
@@ -34,9 +30,9 @@ module DataMemory
 	begin
 		// Write
 		if (MemWrite)
-			ram[realAddress] <= WriteData;
+			ram[Address] <= WriteData;
 	end
-	assign ReadDataAux = ram[realAddress];
+	assign ReadDataAux = ram[Address];
   	assign ReadData = {DATA_WIDTH{MemRead}}& ReadDataAux;
 
 endmodule
