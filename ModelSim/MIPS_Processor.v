@@ -47,6 +47,9 @@ assign  PortOut = 0;
 //******************************************************************/
 //******************************************************************/
 // Data types to connect modules
+wire PCSrc; 
+wire BranchNE_true_wire;
+wire BranchEQ_true_wire;
 wire BranchNE_wire;
 wire BranchEQ_wire;
 wire MemRead_wire;
@@ -74,6 +77,11 @@ wire [31:0] ALUResult_wire;
 wire [31:0] PC_4_wire;
 wire [31:0] InmmediateExtendAnded_wire;
 wire [31:0] PCtoBranch_wire;
+wire [31:0] ShiftToBranch_wire;
+wire [31:0] ShiftedBranch_wire;
+wire [31:0] NewPC_wire;  
+wire [31:0] FinalPC_wire; 
+
 integer ALUStatus;
 
 
@@ -105,7 +113,7 @@ program_counter
 (
 	.clk(clk),
 	.reset(reset),
-	.NewPC(PC_4_wire),
+	.NewPC(FinalPC_wire),
 	.PCValue(PC_wire)
 );
 
@@ -142,13 +150,29 @@ PC_Puls_4
 	
 	.Result(PC_4_wire)
 );
+Adder32bits
+Branch_Adder
+(
+	.Data0(ShiftedBranch_wire),
+	.Data1(PC_4_wire),
+	
+	.Result(NewPC_wire)
+);
+
+//******************************************************************/
+//******************************************************************/
+//******************************************************************/
+//******************************************************************/
+//******************************************************************/
+ShiftLeft2 
+Shift_For_Branch
+(   
+	.DataInput(InmmediateExtend_wire),
+	.DataOutput(ShiftedBranch_wire)
+
+);
 
 
-//******************************************************************/
-//******************************************************************/
-//******************************************************************/
-//******************************************************************/
-//******************************************************************/
 Multiplexer2to1
 #(
 	.NBits(5)
@@ -162,6 +186,22 @@ MUX_ForRTypeAndIType
 	.MUX_Output(WriteRegister_wire)
 
 );
+//*******
+Multiplexer2to1
+#(
+	.NBits(32)
+)
+MUX_ForBranch
+(
+	.Selector(PCSrc),
+	.MUX_Data0(PC_4_wire),
+	.MUX_Data1(NewPC_wire),
+	
+	.MUX_Output(FinalPC_wire)
+
+);
+//*******
+
 
 Multiplexer2to1
 #(
@@ -241,6 +281,9 @@ ArithmeticLogicUnit
 
 assign ALUResultOut = ALUResult_wire;
 
+assign BranchNE_true_wire = BranchNE_wire & ~(Zero_wire);
+assign BranchEQ_true_wire = BranchEQ_wire&Zero_wire;
+assign PCSrc = BranchNE_true_wire|BranchEQ_true_wire;
 
 endmodule
 
