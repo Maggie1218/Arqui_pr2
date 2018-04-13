@@ -66,6 +66,7 @@ wire [2:0] ALUOp_wire;
 wire [3:0] ALUOperation_wire;
 wire [4:0] WriteRegister_wire;
 wire [31:0] PC_wire;
+wire [31:0] BranchedPC_wire;
 wire [31:0] MUX_RFWrite_wire;
 wire [31:0] RAMReadData_wire;
 wire [31:0] Instruction_wire;
@@ -102,7 +103,8 @@ ControlUnit
 	.MemWrite(MemWrite_wire),
 	.ALUOp(ALUOp_wire),
 	.ALUSrc(ALUSrc_wire),
-	.RegWrite(RegWrite_wire)
+	.RegWrite(RegWrite_wire),
+	.Jump(Jump_wire)
 );
 
 PC_Register
@@ -197,11 +199,23 @@ MUX_ForBranch
 	.MUX_Data0(PC_4_wire),
 	.MUX_Data1(NewPC_wire),
 	
-	.MUX_Output(FinalPC_wire)
+	.MUX_Output(BranchedPC_wire)
 
 );
 //*******
+Multiplexer2to1
+#(
+	.NBits(32)
+)
+MUX_ForJump
+(
+	.Selector(Jump_wire),
+	.MUX_Data0(BranchedPC_wire),
+	.MUX_Data1({PC_4_wire[31:28], Instruction_wire[25:0], 2'b0}),
+	
+	.MUX_Output(FinalPC_wire)
 
+);
 
 Multiplexer2to1
 #(
