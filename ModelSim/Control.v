@@ -23,6 +23,7 @@ module Control
 	output MemWrite,
 	output ALUSrc,
 	output RegWrite,
+	output Jump,
 	output [2:0]ALUOp
 );
 localparam R_Type = 0;
@@ -34,10 +35,12 @@ localparam I_Type_LUI = 6'h0f;
 localparam I_Type_LW = 6'h23;
 localparam I_Type_BNE = 6'h5;
 localparam I_Type_BEQ = 6'h4;
- 
+localparam J_Type_J = 6'h2;
+localparam J_Type_JAL = 6'h3;  
 
 
 reg [10:0] ControlValues;
+reg ControlJump;
 
 always@(OP) begin
 	casex(OP)
@@ -50,10 +53,12 @@ always@(OP) begin
 		I_Type_ANDI:  ControlValues = 11'b0_101_00_00_001;
 		I_Type_BEQ:	  ControlValues = 11'b0_100_00_01_000;
 		I_Type_BNE:	  ControlValues = 11'b0_100_00_10_000;
+		J_Type_J:	  ControlJump = 1'b1;
 
 			
 		default:
 			ControlValues= 10'b0000000000;
+			
 		endcase
 end	
 	
@@ -65,7 +70,8 @@ assign MemRead = ControlValues[6];
 assign MemWrite = ControlValues[5];
 assign BranchNE = ControlValues[4];
 assign BranchEQ = ControlValues[3];
-assign ALUOp = ControlValues[2:0];	
+assign ALUOp = ControlValues[2:0];
+assign Jump = ControlJump;
 
 endmodule
 
