@@ -62,9 +62,11 @@ wire ORForBranch;
 wire ALUSrc_wire;
 wire RegWrite_wire;
 wire Zero_wire;
+wire Jal_wire;
 wire [2:0] ALUOp_wire;
 wire [3:0] ALUOperation_wire;
 wire [4:0] WriteRegister_wire;
+wire [4:0] Final_WriteRegister_wire;
 wire [31:0] PC_wire;
 wire [31:0] BranchedPC_wire;
 wire [31:0] MUX_RFWrite_wire;
@@ -76,12 +78,14 @@ wire [31:0] InmmediateExtend_wire;
 wire [31:0] ReadData2OrInmmediate_wire;
 wire [31:0] ALUResult_wire;
 wire [31:0] PC_4_wire;
+wire [31:0] PC_8_wire;
 wire [31:0] InmmediateExtendAnded_wire;
 wire [31:0] PCtoBranch_wire;
 wire [31:0] ShiftToBranch_wire;
 wire [31:0] ShiftedBranch_wire;
 wire [31:0] NewPC_wire;  
 wire [31:0] FinalPC_wire; 
+wire [31:0] WriteData_wire; 
 
 integer ALUStatus;
 
@@ -95,6 +99,8 @@ Control
 ControlUnit
 (
 	.OP(Instruction_wire[31:26]),
+	.Jump(Jump_wire),
+	.Jal(Jal_wire),
 	.RegDst(RegDst_wire),
 	.BranchNE(BranchNE_wire),
 	.BranchEQ(BranchEQ_wire),
@@ -103,8 +109,8 @@ ControlUnit
 	.MemWrite(MemWrite_wire),
 	.ALUOp(ALUOp_wire),
 	.ALUSrc(ALUSrc_wire),
-	.RegWrite(RegWrite_wire),
-	.Jump(Jump_wire)
+	.RegWrite(RegWrite_wire)
+	
 );
 
 PC_Register
@@ -145,13 +151,16 @@ ROMProgramMemory
 );
 
 Adder32bits
-PC_Puls_4
+PC_Plus_4
 (
 	.Data0(PC_wire),
 	.Data1(4),
 	
 	.Result(PC_4_wire)
 );
+//****************
+
+//******************
 Adder32bits
 Branch_Adder
 (
@@ -202,20 +211,7 @@ MUX_ForBranch
 	.MUX_Output(BranchedPC_wire)
 
 );
-//*******
-Multiplexer2to1
-#(
-	.NBits(32)
-)
-MUX_ForJump
-(
-	.Selector(Jump_wire),
-	.MUX_Data0(BranchedPC_wire),
-	.MUX_Data1({PC_4_wire[31:28], Instruction_wire[25:0], 2'b0}),
-	
-	.MUX_Output(FinalPC_wire)
 
-);
 
 Multiplexer2to1
 #(
@@ -237,10 +233,10 @@ Register_File
 	.clk(clk),
 	.reset(reset),
 	.RegWrite(RegWrite_wire),
-	.WriteRegister(WriteRegister_wire),
+	.WriteRegister(Final_WriteRegister_wire),
 	.ReadRegister1(Instruction_wire[25:21]),
 	.ReadRegister2(Instruction_wire[20:16]),
-	.WriteData(MUX_RFWrite_wire),
+	.WriteData(WriteData_wire),
 	.ReadData1(ReadData1_wire),
 	.ReadData2(ReadData2_wire)
 
@@ -292,6 +288,59 @@ ArithmeticLogicUnit
 	.ALUResult(ALUResult_wire),
 	.shamt(Instruction_wire[10:6])
 );
+
+
+
+//******************************************************************/
+//******************************************************************/
+//**************************J U M P*********************************/
+//******************************************************************/
+//******************************************************************/
+
+Multiplexer2to1
+#(
+	.NBits(32)
+)
+MUX_ForJump
+(
+	.Selector(Jump_wire),
+	.MUX_Data0(BranchedPC_wire),
+	.MUX_Data1({PC_4_wire[31:28], Instruction_wire[25:0], 2'b0}),
+	
+	.MUX_Output(FinalPC_wire)
+
+);
+
+Multiplexer2to1
+#(
+	.NBits(32)
+)
+MUX_ForJal
+(
+	.Selector(Jal_wire),
+	.MUX_Data0(MUX_RFWrite_wire),
+	.MUX_Data1(PC_4_wire),
+	
+	.MUX_Output(WriteData_wire)
+
+);
+
+
+
+Multiplexer2to1
+#(
+	.NBits(5)
+)
+MUX_ForWriteRegister
+(
+	.Selector(Jal_wire),
+	.MUX_Data0(WriteRegister_wire),
+	.MUX_Data1(5'b11111),
+	
+	.MUX_Output(Final_WriteRegister_wire)
+
+);
+
 
 assign ALUResultOut = ALUResult_wire;
 
