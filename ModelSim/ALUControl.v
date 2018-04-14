@@ -16,7 +16,8 @@ module ALUControl
 (
 	input [2:0] ALUOp,
 	input [5:0] ALUFunction,
-	output [3:0] ALUOperation
+	output [3:0] ALUOperation,
+	output JRsel
 
 );
 
@@ -46,11 +47,12 @@ always@(Selector)begin
 	casex(Selector)
 		R_Type_AND:    ALUControlValues = 4'b0000;
 		R_Type_OR: 		ALUControlValues = 4'b0001;
+		R_Type_NOR: 	ALUControlValues = 4'b0010;
 		R_Type_ADD:		ALUControlValues = 4'b0011; 
 		R_Type_SUB:		ALUControlValues = 4'b0100;
-		R_Type_NOR: 	ALUControlValues = 4'b0010;
 		R_Type_SRL:		ALUControlValues = 4'b0110;
 		R_Type_SLL:		ALUControlValues = 4'b0111;
+		R_Type_JR:		ALUControlValues = 4'b1000;
 		
 		I_Type_ANDI:	ALUControlValues = 4'b0000; 
 		I_Type_ORI:		ALUControlValues = 4'b0001; 	
@@ -67,6 +69,7 @@ end
 
 
 assign ALUOperation = ALUControlValues;
+assign JRsel = ALUControlValues[3];
 
 endmodule
 

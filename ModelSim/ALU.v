@@ -54,6 +54,7 @@ localparam SLL = 4'b0111;
 			ALUResult = B << shamt; 
 		  SRL: 
 			ALUResult = B >> shamt; 
+		  
 			
 
 		default:

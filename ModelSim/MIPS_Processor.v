@@ -63,6 +63,7 @@ wire ALUSrc_wire;
 wire RegWrite_wire;
 wire Zero_wire;
 wire Jal_wire;
+wire JR_wire;
 wire [2:0] ALUOp_wire;
 wire [3:0] ALUOperation_wire;
 wire [4:0] WriteRegister_wire;
@@ -86,6 +87,7 @@ wire [31:0] ShiftedBranch_wire;
 wire [31:0] NewPC_wire;  
 wire [31:0] FinalPC_wire; 
 wire [31:0] WriteData_wire; 
+wire [31:0] AbsolutePC_wire;
 
 integer ALUStatus;
 
@@ -121,7 +123,7 @@ program_counter
 (
 	.clk(clk),
 	.reset(reset),
-	.NewPC(FinalPC_wire),
+	.NewPC(AbsolutePC_wire),
 	.PCValue(PC_wire)
 );
 
@@ -271,7 +273,8 @@ ArithmeticLogicUnitControl
 (
 	.ALUOp(ALUOp_wire),
 	.ALUFunction(Instruction_wire[5:0]),
-	.ALUOperation(ALUOperation_wire)
+	.ALUOperation(ALUOperation_wire),
+	.JRsel(JR_wire)
 	
 
 );
@@ -341,6 +344,21 @@ MUX_ForWriteRegister
 
 );
 
+
+
+Multiplexer2to1
+#(
+	.NBits(32)
+)
+MUX_ForJR
+(
+	.Selector(JR_wire),
+	.MUX_Data0(FinalPC_wire),
+	.MUX_Data1(ReadData1_wire),
+	
+	.MUX_Output(AbsolutePC_wire)
+
+);
 
 assign ALUResultOut = ALUResult_wire;
 
