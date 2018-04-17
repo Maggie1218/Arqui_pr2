@@ -144,7 +144,7 @@ RAMDataMemory
 
 ProgramMemory
 #(
-	.MEMORY_DEPTH(MEMORY_DEPTH)
+	.MEMORY_DEPTH(300)
 )
 ROMProgramMemory
 (
